@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function _powerdns_profile {
+  local shome="${_powerdns_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$shome/exec:$PATH"
+  export ANSIBLE_ROLES_PATH="${ANSIBLE_ROLES_PATH:+${ANSIBLE_ROLES_PATH}:}$shome/roles"
+  export ANSIBLE_LIBRARY="${ANSIBLE_LIBRARY:+${ANSIBLE_LIBRARY}:}$shome/library"
+
+  POWERDNS_VERSION='0.0.1'
+}
+
+_powerdns_profile
